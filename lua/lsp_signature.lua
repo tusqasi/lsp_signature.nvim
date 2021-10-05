@@ -314,7 +314,7 @@ local signature_handler = helper.mk_handler(function(err, result, ctx, config)
     display_opts, off_y = helper.cal_pos(lines, config)
 
     config.offset_y = off_y
-    config.focusable = false
+    config.focusable = true -- allow focus
     config.max_height = display_opts.height
 
     -- try not to overlap with pum autocomplete menu
@@ -448,7 +448,7 @@ function M.on_InsertLeave()
     manager.timer = nil
   end
   log('Insert leave cleanup')
-  helper.cleanup_async(true, 0.3)  -- defer close after 0.3s
+  helper.cleanup_async(true, 0.3) -- defer close after 0.3s
 end
 
 local start_watch_changes_timer = function()
